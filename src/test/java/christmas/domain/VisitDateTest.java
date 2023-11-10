@@ -25,7 +25,7 @@ class VisitDateTest {
 
     @DisplayName("방문 날짜로 요일을 구한다.")
     @ParameterizedTest
-    @MethodSource("비교할_두개의_로또번호_설정")
+    @MethodSource("방문날짜와_요일결과_설정하기")
     void 방문날짜로_요일을_구한다(int 날짜, Day 요일) {
         // when
         VisitDate 방문날짜 = new VisitDate(날짜);
@@ -34,7 +34,7 @@ class VisitDateTest {
         assertEquals(요일, 방문날짜.calculateDay());
     }
 
-    static Stream<Arguments> 비교할_두개의_로또번호_설정() {
+    static Stream<Arguments> 방문날짜와_요일결과_설정하기() {
         return Stream.of(
             Arguments.arguments(11, Day.MONDAY),
             Arguments.arguments(19, Day.TUESDAY),
