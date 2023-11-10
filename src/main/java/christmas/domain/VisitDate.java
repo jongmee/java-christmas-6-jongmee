@@ -8,19 +8,19 @@ public class VisitDate {
 
     private final int date;
 
-    public VisitDate(int date) {
+    public VisitDate(final int date) {
         validate(date);
         this.date = date;
     }
 
-    private void validate(int date) {
+    private void validate(final int date) {
         if(date < START_DATE || date > LAST_DATE) {
             throw new IllegalArgumentException(INVALID_DATE);
         }
     }
 
     public Day calculateDay() {
-        int offset = date % 7;
+        final int offset = date % 7;
         return Day.findByOffset(offset);
     }
 }

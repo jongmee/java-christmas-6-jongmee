@@ -13,11 +13,11 @@ public enum Day {
 
     private int offset;
 
-    Day(int offset) {
+    Day(final int offset) {
         this.offset = offset;
     }
 
-    public static Day findByOffset(int offset) {
+    public static Day findByOffset(final int offset) {
         return Arrays.stream(Day.values())
             .filter(day -> day.offset == offset)
             .findAny().get();
