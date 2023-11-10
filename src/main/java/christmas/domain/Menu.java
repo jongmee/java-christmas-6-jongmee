@@ -36,4 +36,8 @@ public enum Menu {
     public boolean isBeverage() {
         return type.equals(MenuType.BEVERAGE);
     }
+
+    public int getPriceAboutCount(int count) {
+        return price * count;
+    }
 }

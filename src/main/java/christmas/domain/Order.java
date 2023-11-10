@@ -46,4 +46,14 @@ public class Order {
             throw new IllegalArgumentException(BEVERAGE_ONLY_ERROR);
         }
     }
+
+    public int calculateTotalPrice() {
+        int sum = 0;
+        for (Map.Entry<Menu, Integer> entry : orders.entrySet()) {
+            Menu menu = entry.getKey();
+            Integer count = entry.getValue();
+            sum += menu.getPriceAboutCount(count);
+        }
+        return sum;
+    }
 }
