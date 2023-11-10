@@ -18,4 +18,9 @@ public class VisitDate {
             throw new IllegalArgumentException(INVALID_DATE);
         }
     }
+
+    public Day calculateDay() {
+        int offset = date % 7;
+        return Day.findByOffset(offset);
+    }
 }

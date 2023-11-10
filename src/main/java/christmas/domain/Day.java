@@ -1,5 +1,7 @@
 package christmas.domain;
 
+import java.util.Arrays;
+
 public enum Day {
     MONDAY(4),
     TUESDAY(5),
@@ -13,5 +15,11 @@ public enum Day {
 
     Day(int offset) {
         this.offset = offset;
+    }
+
+    public static Day findByOffset(int offset) {
+        return Arrays.stream(Day.values())
+            .filter(day -> day.offset == offset)
+            .findAny().get();
     }
 }
