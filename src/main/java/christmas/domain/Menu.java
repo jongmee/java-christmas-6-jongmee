@@ -32,4 +32,8 @@ public enum Menu {
             .filter(menu -> menu.name.equals(name))
             .findAny();
     }
+
+    public boolean isBeverage() {
+        return type.equals(MenuType.BEVERAGE);
+    }
 }

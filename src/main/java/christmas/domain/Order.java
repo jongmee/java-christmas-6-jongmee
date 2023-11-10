@@ -1,16 +1,21 @@
 package christmas.domain;
 
+import static christmas.constants.ErrorMessage.BEVERAGE_ONLY_ERROR;
 import static christmas.constants.ErrorMessage.INVALID_ORDER;
+import static christmas.constants.ErrorMessage.MAX_ORDER_LIMIT_EXCEEDED;
 
 import java.util.HashMap;
 import java.util.Map;
 
 public class Order {
+    private static final long ORDER_MAX = 20L;
+
     private final Map<Menu, Integer> orders;
 
     public Order(Map<String, Integer> orders) {
         this.orders = validateMenu(orders);
-
+        validateTotalNumber();
+        validateBeverage();
     }
 
     private Map<Menu, Integer> validateMenu(Map<String, Integer> orders) {
@@ -21,5 +26,24 @@ public class Order {
             result.put(menu, orders.get(menuName));
         }
         return result;
+    }
+
+    private void validateTotalNumber() {
+        long sum = 0;
+        for(int number: orders.values()) {
+            sum += number;
+        }
+        if(sum > ORDER_MAX) {
+            throw new IllegalArgumentException(MAX_ORDER_LIMIT_EXCEEDED);
+        }
+    }
+
+    private void validateBeverage() {
+        long beverageNumber = orders.keySet().stream()
+            .filter(Menu::isBeverage)
+            .count();
+        if(beverageNumber == (long)orders.size()) {
+            throw new IllegalArgumentException(BEVERAGE_ONLY_ERROR);
+        }
     }
 }
