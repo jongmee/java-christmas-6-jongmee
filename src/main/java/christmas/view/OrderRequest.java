@@ -10,7 +10,7 @@ import java.util.stream.Collectors;
 
 public class OrderRequest {
     private static final String MENU_DELIMITER = ",";
-    private static final String NUMBER_DELIMITER = "-";
+    private static final String COUNT_DELIMITER = "-";
 
     private final Map<String, Integer> orders;
 
@@ -43,7 +43,7 @@ public class OrderRequest {
     }
 
     private List<String> parseMenu(final String menu) {
-        List<String> parsedMenu = Arrays.stream(menu.split(NUMBER_DELIMITER))
+        List<String> parsedMenu = Arrays.stream(menu.split(COUNT_DELIMITER))
             .map(String::trim)
             .collect(Collectors.toList());
         validateMenuForm(parsedMenu);
@@ -55,8 +55,8 @@ public class OrderRequest {
         for (Map.Entry<String, String> entry : menuMap.entrySet()) {
             String menuName = entry.getKey();
             String value = entry.getValue();
-            Integer number = validateNumber(value);
-            validForm.put(menuName, number);
+            Integer count = validateCount(value);
+            validForm.put(menuName, count);
         }
         return validForm;
     }
@@ -73,9 +73,9 @@ public class OrderRequest {
         }
     }
 
-    private Integer validateNumber(final String number) {
+    private Integer validateCount(final String count) {
         try {
-            return Integer.valueOf(number);
+            return Integer.valueOf(count);
         } catch (NumberFormatException e) {
             throw new IllegalArgumentException(INVALID_ORDER);
         }

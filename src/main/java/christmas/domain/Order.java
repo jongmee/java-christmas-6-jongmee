@@ -14,7 +14,7 @@ public class Order {
 
     public Order(Map<String, Integer> orders) {
         this.orders = validateMenu(orders);
-        validateTotalNumber();
+        validateTotalCount();
         validateBeverage();
     }
 
@@ -28,10 +28,10 @@ public class Order {
         return result;
     }
 
-    private void validateTotalNumber() {
+    private void validateTotalCount() {
         long sum = 0;
-        for(int number: orders.values()) {
-            sum += number;
+        for(int count: orders.values()) {
+            sum += count;
         }
         if(sum > ORDER_MAX) {
             throw new IllegalArgumentException(MAX_ORDER_LIMIT_EXCEEDED);
@@ -39,10 +39,10 @@ public class Order {
     }
 
     private void validateBeverage() {
-        long beverageNumber = orders.keySet().stream()
+        long beverageCount = orders.keySet().stream()
             .filter(Menu::isBeverage)
             .count();
-        if(beverageNumber == (long)orders.size()) {
+        if(beverageCount == (long)orders.size()) {
             throw new IllegalArgumentException(BEVERAGE_ONLY_ERROR);
         }
     }
