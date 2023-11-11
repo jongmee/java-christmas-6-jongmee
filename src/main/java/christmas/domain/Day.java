@@ -22,4 +22,11 @@ public enum Day {
             .filter(day -> day.offset == offset)
             .findAny().get();
     }
+
+    public boolean isWeekend() {
+        if(this.equals(FRIDAY) || this.equals(SATURDAY)) {
+            return true;
+        }
+        return false;
+    }
 }

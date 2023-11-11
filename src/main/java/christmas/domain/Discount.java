@@ -15,4 +15,11 @@ public enum Discount {
         this.target = target;
         this.name = name;
     }
+
+    public static Discount chooseWeekdayOrWeekend(Day day) {
+        if(day.isWeekend()) {
+            return WEEKEND;
+        }
+        return WEEKDAY;
+    }
 }
