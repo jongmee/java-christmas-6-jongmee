@@ -1,10 +1,10 @@
 package christmas.domain;
 
 public enum Discount {
-    CHRISTMAS(100, MenuType.ALL, "크리스마스 디데이 할인"),
+    CHRISTMAS(100, MenuType.ENTIRE, "크리스마스 디데이 할인"),
     WEEKDAY(2_023, MenuType.DESSERT, "평일 할인"),
     WEEKEND(2_023, MenuType.MAIN, "주말 할인"),
-    SPECIAL(1_000, MenuType.ALL, "특별 할인");
+    SPECIAL(1_000, MenuType.ENTIRE, "특별 할인");
 
     private int amount;
     private MenuType target;
