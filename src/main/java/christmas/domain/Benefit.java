@@ -13,10 +13,8 @@ public class Benefit {
     }
 
     private List<Discount> determineDiscounts(VisitDate date) {
-        Day day = date.calculateDay();
-
         List<Discount> result = new ArrayList<>();
-        result.add(Discount.chooseWeekdayOrWeekend(day));
+        result.add(Discount.chooseWeekdayOrWeekend(date));
         if(isAvailableForSpecial(date)) {
             result.add(Discount.SPECIAL);
         }

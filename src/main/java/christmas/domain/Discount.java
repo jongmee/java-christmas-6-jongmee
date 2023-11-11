@@ -16,7 +16,8 @@ public enum Discount {
         this.name = name;
     }
 
-    public static Discount chooseWeekdayOrWeekend(Day day) {
+    public static Discount chooseWeekdayOrWeekend(VisitDate date) {
+        Day day = date.calculateDay();
         if(day.isWeekend()) {
             return WEEKEND;
         }
