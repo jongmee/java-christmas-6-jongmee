@@ -31,4 +31,8 @@ public class VisitDate {
     public boolean isChristmas() {
         return date == 25;
     }
+
+    public int getChristmasDiscountWeight() {
+        return date - 1;
+    }
 }

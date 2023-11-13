@@ -40,7 +40,7 @@ public class Order {
 
     private void validateBeverage() {
         long beverageCount = orders.keySet().stream()
-            .filter(Menu::isBeverage)
+            .filter(menu -> menu.isType(MenuType.BEVERAGE))
             .count();
         if(beverageCount == (long)orders.size()) {
             throw new IllegalArgumentException(BEVERAGE_ONLY_ERROR);
@@ -55,5 +55,16 @@ public class Order {
             sum += menu.getPriceAboutCount(count);
         }
         return sum;
+    }
+
+    public int countByMenuType(MenuType type) {
+        int count = 0;
+        for(Map.Entry<Menu, Integer> entry : orders.entrySet()) {
+            Menu menu = entry.getKey();
+            if(menu.isType(type)) {
+                count += entry.getValue();
+            }
+        }
+        return count;
     }
 }

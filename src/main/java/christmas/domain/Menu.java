@@ -33,8 +33,8 @@ public enum Menu {
             .findAny();
     }
 
-    public boolean isBeverage() {
-        return type.equals(MenuType.BEVERAGE);
+    public boolean isType(MenuType type) {
+        return this.type.equals(type);
     }
 
     public int getPriceAboutCount(int count) {
