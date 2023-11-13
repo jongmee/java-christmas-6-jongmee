@@ -4,8 +4,10 @@ import static christmas.constants.ErrorMessage.BEVERAGE_ONLY_ERROR;
 import static christmas.constants.ErrorMessage.INVALID_ORDER;
 import static christmas.constants.ErrorMessage.MAX_ORDER_LIMIT_EXCEEDED;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThatThrownBy;
+import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+import christmas.view.OrderRequest;
 import java.util.Map;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -48,6 +50,17 @@ class OrderTest {
             new Order(주문);
         }).isInstanceOf(IllegalArgumentException.class)
             .hasMessage(BEVERAGE_ONLY_ERROR);
+    }
+
+    @DisplayName("올바르게 주문한다.")
+    @Test
+    void 올바르게_주문한다() {
+        // given
+        Map<String, Integer> 주문 = Map.of("타파스", 2);
+        // when
+        assertDoesNotThrow(() -> {
+            new Order(주문);
+        });
     }
 
     @DisplayName("총 주문 금액을 바르게 계산한다.")
