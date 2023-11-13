@@ -6,12 +6,12 @@ import java.util.Map;
 public class Benefit {
     private static final int GIFT_CRITERIA = 120_000;
 
-    private final Map<Discount, Integer> discounts;
-    private final Map<Menu, Integer> gifts;
+    private final Map<Discount, Integer> discountAmounts;
+    private final Map<Menu, Integer> giftCounts;
 
     public Benefit(final VisitDate date, final Order order) {
-        this.discounts = determineDiscounts(date, order);
-        this.gifts = determineGifts(order);
+        this.discountAmounts = determineDiscounts(date, order);
+        this.giftCounts = determineGifts(order);
     }
 
     private Map<Discount, Integer> determineDiscounts(final VisitDate date, final Order order) {
@@ -51,17 +51,17 @@ public class Benefit {
     }
 
     public Map<Discount, Integer> getDiscounts() {
-        return discounts;
+        return discountAmounts;
     }
 
     public int calculateTotalAmount() {
         int giftAmount = 0;
-        for(Map.Entry<Menu, Integer> entry : gifts.entrySet()) {
+        for(Map.Entry<Menu, Integer> entry : giftCounts.entrySet()) {
             Menu menu = entry.getKey();
             Integer count = entry.getValue();
             giftAmount += menu.getPriceAboutCount(count);
         }
-        int discountAmount = discounts.values().stream()
+        int discountAmount = discountAmounts.values().stream()
             .mapToInt(Integer::intValue)
             .sum();
         return giftAmount + discountAmount;
