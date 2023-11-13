@@ -34,7 +34,7 @@ public enum Discount {
     }
 
     public Map<Discount, Integer> calculateChristmasDiscount(final VisitDate date) {
-        validate(SPECIAL);
+        validate(CHRISTMAS);
         int offset = 1_000;
         return new HashMap<>(Map.of(this, date.getChristmasDiscountWeight() * amount + offset));
     }
