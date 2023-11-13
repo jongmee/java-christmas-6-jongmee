@@ -42,8 +42,11 @@ class DiscountTest {
 
     @DisplayName("주말 할인과 주중 할인 금액을 계산한다.")
     @ParameterizedTest
-    @MethodSource("주문과_할인종목_설정하기")
-    void 주말과_주중_할인_금액을_계산한다(Order 주문, Discount 할인종목, int 할인금액) {
+    @MethodSource("할인종목과_계산결과_설정하기")
+    void 주말과_주중_할인_금액을_계산한다(Discount 할인종목, int 할인금액) {
+        // given
+        Order 주문 = 주문_생성하기();
+
         // when
         Map<Discount, Integer> 할인계산결과 = 할인종목.calculateWeekDiscount(주문);
 
@@ -51,10 +54,10 @@ class DiscountTest {
         assertEquals(할인금액, 할인계산결과.get(할인종목));
     }
 
-    static Stream<Arguments> 주문과_할인종목_설정하기() {
+    static Stream<Arguments> 할인종목과_계산결과_설정하기() {
         return Stream.of(
-            Arguments.arguments(주문_생성하기(), Discount.WEEKEND, 6_069),
-            Arguments.arguments(주문_생성하기(), Discount.WEEKDAY, 4_046)
+            Arguments.arguments(Discount.WEEKEND, 6_069),
+            Arguments.arguments(Discount.WEEKDAY, 4_046)
         );
     }
 
