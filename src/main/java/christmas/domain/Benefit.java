@@ -53,4 +53,17 @@ public class Benefit {
     public Map<Discount, Integer> getDiscounts() {
         return discounts;
     }
+
+    public int calculateTotalAmount() {
+        int giftAmount = 0;
+        for(Map.Entry<Menu, Integer> entry : gifts.entrySet()) {
+            Menu menu = entry.getKey();
+            Integer count = entry.getValue();
+            giftAmount += menu.getPriceAboutCount(count);
+        }
+        int discountAmount = discounts.values().stream()
+            .mapToInt(Integer::intValue)
+            .sum();
+        return giftAmount + discountAmount;
+    }
 }
