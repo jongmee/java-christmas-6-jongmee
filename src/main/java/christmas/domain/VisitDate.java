@@ -23,4 +23,12 @@ public class VisitDate {
         final int offset = date % 7;
         return Day.findByOffset(offset);
     }
+
+    public boolean isBeforeChristmas() {
+        return date < 25;
+    }
+
+    public boolean isChristmas() {
+        return date == 25;
+    }
 }
