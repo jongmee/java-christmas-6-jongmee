@@ -16,9 +16,9 @@ public class OutputView {
         Writer.printLine(String.format(BENEFIT_MESSAGE, visitDate));
     }
 
-    public static void alertOrder(OrderResponse response, int orderAmount) {
+    public static void alertOrder(ItemResponse orderResponse, int orderAmount) {
         Writer.printLine(ORDER_MENU_HEADER);
-        response.getMessage().stream()
+        orderResponse.getMessage().stream()
             .forEach(Writer::printLine);
 
         Writer.printLine(ORDER_AMOUNT_HEADER);

@@ -4,7 +4,7 @@ import static christmas.constants.ErrorMessage.BEVERAGE_ONLY_ERROR;
 import static christmas.constants.ErrorMessage.INVALID_ORDER;
 import static christmas.constants.ErrorMessage.MAX_ORDER_LIMIT_EXCEEDED;
 
-import christmas.view.OrderResponse;
+import christmas.view.ItemResponse;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -69,7 +69,7 @@ public class Order {
         return count;
     }
 
-    public OrderResponse convertToResponse() {
-        return new OrderResponse(orders);
+    public ItemResponse convertToResponse() {
+        return new ItemResponse(orders);
     }
 }
