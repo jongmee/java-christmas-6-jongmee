@@ -9,6 +9,7 @@ import java.util.Map;
 public class BenefitResponse {
     private static final String FORMAT = "%s: -%,d원";
     private static final String GIFT_MESSAGE = "증정 이벤트";
+    private static final String NONE = "없음";
 
     private final List<String> message;
 
@@ -25,9 +26,18 @@ public class BenefitResponse {
             message.add(benefit);
         }
 
-        String gift = String.format(FORMAT, GIFT_MESSAGE, giftAmounts);
-        message.add(gift);
+        if(giftAmounts != 0) {
+            String gift = String.format(FORMAT, GIFT_MESSAGE, giftAmounts);
+            message.add(gift);
+        }
 
+        return checkEmptyList(message);
+    }
+
+    private List<String> checkEmptyList(List<String> message) {
+        if(message.size() == 0) {
+            message.add(NONE);
+        }
         return message;
     }
 

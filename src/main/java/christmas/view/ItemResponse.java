@@ -7,6 +7,7 @@ import java.util.Map;
 
 public class ItemResponse {
     private static final String FORMAT = "%s %d개";
+    private static final String NONE = "없음";
 
     private final List<String> message;
 
@@ -21,6 +22,13 @@ public class ItemResponse {
             Integer count = entry.getValue();
             String item = String.format(FORMAT, menu.toString(), count);
             message.add(item);
+        }
+        return checkEmptyList(message);
+    }
+
+    private List<String> checkEmptyList(List<String> message) {
+        if(message.size() == 0) {
+            message.add(NONE);
         }
         return message;
     }
