@@ -1,7 +1,6 @@
 package christmas.view;
 
 import christmas.domain.Discount;
-import christmas.domain.Menu;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;

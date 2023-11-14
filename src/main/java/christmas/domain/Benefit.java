@@ -73,7 +73,6 @@ public class Benefit {
     }
 
     public int calculateDiscountAmount() {
-        int amount = 0;
         return discountAmounts.values().stream()
             .mapToInt(Integer::intValue)
             .sum();
