@@ -25,7 +25,10 @@ public enum Discount {
     public Map<Discount, Integer> calculateWeekDiscount(final Order order) {
         validate(WEEKDAY, WEEKEND);
         int count = order.countByMenuType(target);
-        return new HashMap<>(Map.of(this, count * amount));
+        if(count != 0) {
+            return new HashMap<>(Map.of(this, count * amount));
+        }
+        return new HashMap<>();
     }
 
     public Map<Discount, Integer> calculateSpecialDiscount() {
