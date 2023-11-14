@@ -57,4 +57,21 @@ class BenefitTest {
     private static Order 주문_생성하기() {
         return new Order(Map.of("티본스테이크", 1, "바비큐립", 2, "초코케이크", 2, "제로콜라", 1));
     }
+
+    @DisplayName("총 주문 금액이 10,000원을 넘지 않으면 혜택이 적용되지 않는다.")
+    @Test
+    void 총주문금액에따라_혜택이_적용되지않는다() {
+        // given
+        Order 주문 = new Order(Map.of("타파스", 1,"제로콜라", 1));
+        VisitDate 방문날짜 = new VisitDate(3);
+
+        // when
+        Benefit 혜택 = new Benefit(방문날짜, 주문);
+
+        // then
+        List<String> 응답 = 혜택.convertToResponse().getMessage();
+        assertThat(응답)
+            .hasSize(1)
+            .contains("없음");
+    }
 }
