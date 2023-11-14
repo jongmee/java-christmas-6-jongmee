@@ -1,6 +1,7 @@
 package christmas.domain;
 
 import christmas.view.BenefitResponse;
+import christmas.view.ItemResponse;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -71,5 +72,9 @@ public class Benefit {
 
     public BenefitResponse convertToResponse() {
         return new BenefitResponse(discountAmounts, calculateGiftAmount());
+    }
+
+    public ItemResponse convertToGiftResponse() {
+        return new ItemResponse(giftCounts);
     }
 }
