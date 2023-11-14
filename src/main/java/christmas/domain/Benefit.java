@@ -6,6 +6,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class Benefit {
+    private static final int MINIMUM_ORDER_AMOUNT = 10_000;
     private static final int GIFT_CRITERIA = 120_000;
 
     private final Map<Discount, Integer> discountAmounts;
@@ -16,11 +17,20 @@ public class Benefit {
         this.giftCounts = determineGifts(order);
     }
 
+    private boolean checkOrderAmount(final Order order) {
+        if(order.calculateTotalPrice() >= MINIMUM_ORDER_AMOUNT) {
+            return true;
+        }
+        return false;
+    }
+
     private Map<Discount, Integer> determineDiscounts(final VisitDate date, final Order order) {
         Map<Discount, Integer> result = new HashMap<>();
-        result.putAll(determineWeekDiscount(date, order));
-        result.putAll(determineSpecialDiscount(date));
-        result.putAll(determineChristmasDiscount(date));
+        if(checkOrderAmount(order)) {
+            result.putAll(determineWeekDiscount(date, order));
+            result.putAll(determineSpecialDiscount(date));
+            result.putAll(determineChristmasDiscount(date));
+        }
         return result;
     }
 
@@ -46,7 +56,7 @@ public class Benefit {
     }
 
     private Map<Menu, Integer> determineGifts(final Order order) {
-        if(order.calculateTotalPrice() > GIFT_CRITERIA) {
+        if(checkOrderAmount(order) && order.calculateTotalPrice() > GIFT_CRITERIA) {
             return new HashMap<>(Map.of(Menu.CHAMPAGNE, 1));
         }
         return new HashMap<>();
