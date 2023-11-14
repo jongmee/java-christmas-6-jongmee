@@ -7,7 +7,7 @@ import java.util.List;
 import java.util.Map;
 
 public class BenefitResponse {
-    private static final String FORMAT = "%s: -%d원";
+    private static final String FORMAT = "%s: -%,d원";
     private static final String GIFT_MESSAGE = "증정 이벤트";
 
     private final List<String> message;
