@@ -1,7 +1,7 @@
 package christmas.domain;
 
-import christmas.view.BenefitResponse;
-import christmas.view.ItemResponse;
+import christmas.view.response.BenefitResponse;
+import christmas.view.response.ItemResponse;
 import java.util.HashMap;
 import java.util.Map;
 

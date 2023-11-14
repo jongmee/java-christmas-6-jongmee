@@ -1,5 +1,7 @@
 package christmas.view;
 
+import christmas.view.response.BenefitResponse;
+import christmas.view.response.ItemResponse;
 import christmas.view.utility.Writer;
 
 public class OutputView {

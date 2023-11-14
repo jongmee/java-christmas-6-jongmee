@@ -4,7 +4,7 @@ import static christmas.constants.ErrorMessage.BEVERAGE_ONLY_ERROR;
 import static christmas.constants.ErrorMessage.INVALID_ORDER;
 import static christmas.constants.ErrorMessage.MAX_ORDER_LIMIT_EXCEEDED;
 
-import christmas.view.ItemResponse;
+import christmas.view.response.ItemResponse;
 import java.util.HashMap;
 import java.util.Map;
 

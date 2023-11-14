@@ -5,9 +5,9 @@ import christmas.domain.Benefit;
 import christmas.domain.Order;
 import christmas.domain.VisitDate;
 import christmas.view.InputView;
-import christmas.view.OrderRequest;
+import christmas.view.request.OrderRequest;
 import christmas.view.OutputView;
-import christmas.view.VisitDateRequest;
+import christmas.view.request.VisitDateRequest;
 
 public class PromotionController {
     private final InputView inputView;

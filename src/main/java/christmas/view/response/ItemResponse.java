@@ -1,4 +1,4 @@
-package christmas.view;
+package christmas.view.response;
 
 import christmas.domain.Menu;
 import java.util.ArrayList;
