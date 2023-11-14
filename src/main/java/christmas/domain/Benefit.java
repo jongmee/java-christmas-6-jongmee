@@ -62,11 +62,16 @@ public class Benefit {
         return amount;
     }
 
-    public int calculateTotalAmount() {
-        int giftAmount = calculateGiftAmount();
-        int discountAmount = discountAmounts.values().stream()
+    public int calculateDiscountAmount() {
+        int amount = 0;
+        return discountAmounts.values().stream()
             .mapToInt(Integer::intValue)
             .sum();
+    }
+
+    public int calculateTotalAmount() {
+        int giftAmount = calculateGiftAmount();
+        int discountAmount = calculateDiscountAmount();
         return giftAmount + discountAmount;
     }
 
