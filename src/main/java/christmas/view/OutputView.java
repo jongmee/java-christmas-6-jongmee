@@ -5,7 +5,6 @@ import christmas.view.utility.Writer;
 public class OutputView {
     private static final String BENEFIT_MESSAGE = "12월 %s일에 우테코 식당에서 받을 이벤트 혜택 미리 보기!";
     private static final String AMOUNT_MESSAGE = "%,d원";
-    private static final String DISCOUNT_AMOUNT_MESSAGE = "-%,d원";
     private static final String ORDER_MENU_HEADER = "<주문 메뉴>";
     private static final String ORDER_AMOUNT_HEADER = "<할인 전 총주문 금액>";
     private static final String GIFT_MENU_HEADER = "<증정 메뉴>";
@@ -39,7 +38,7 @@ public class OutputView {
             .forEach(Writer::printLine);
 
         Writer.printLine(BENEFIT_AMOUNT_HEADER);
-        Writer.printLine(String.format(DISCOUNT_AMOUNT_MESSAGE, benefitAmount));
+        Writer.printLine(String.format(AMOUNT_MESSAGE, -1 * benefitAmount));
     }
 
     public void alertTotalPayment(int payment) {
