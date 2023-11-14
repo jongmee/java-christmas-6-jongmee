@@ -1,5 +1,6 @@
 package christmas.domain;
 
+import christmas.view.BenefitResponse;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -50,20 +51,25 @@ public class Benefit {
         return new HashMap<>();
     }
 
-    public Map<Discount, Integer> getDiscounts() {
-        return discountAmounts;
-    }
-
-    public int calculateTotalAmount() {
-        int giftAmount = 0;
+    public int calculateGiftAmount() {
+        int amount = 0;
         for(Map.Entry<Menu, Integer> entry : giftCounts.entrySet()) {
             Menu menu = entry.getKey();
             Integer count = entry.getValue();
-            giftAmount += menu.getPriceAboutCount(count);
+            amount += menu.getPriceAboutCount(count);
         }
+        return amount;
+    }
+
+    public int calculateTotalAmount() {
+        int giftAmount = calculateGiftAmount();
         int discountAmount = discountAmounts.values().stream()
             .mapToInt(Integer::intValue)
             .sum();
         return giftAmount + discountAmount;
+    }
+
+    public BenefitResponse convertToResponse() {
+        return new BenefitResponse(discountAmounts, calculateGiftAmount());
     }
 }
