@@ -35,4 +35,9 @@ public class VisitDate {
     public int getChristmasDiscountWeight() {
         return date - 1;
     }
+
+    @Override
+    public String toString() {
+        return String.valueOf(date);
+    }
 }

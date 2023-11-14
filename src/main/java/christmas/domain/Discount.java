@@ -44,4 +44,9 @@ public enum Discount {
             throw new IllegalStateException(INVALID_DISCOUNT_INSTANCE);
         }
     }
+
+    @Override
+    public String toString() {
+        return name;
+    }
 }

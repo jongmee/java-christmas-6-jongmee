@@ -40,4 +40,9 @@ public enum Menu {
     public int getPriceAboutCount(int count) {
         return price * count;
     }
+
+    @Override
+    public String toString() {
+        return name;
+    }
 }
