@@ -33,12 +33,22 @@ public class OutputView {
             .forEach(Writer::printLine);
     }
 
-    public static void alertBenefit(BenefitResponse benefitResponse, Integer benefitAmount) {
+    public static void alertBenefit(BenefitResponse benefitResponse, int benefitAmount) {
         Writer.printLine(BENEFIT_HEADER);
         benefitResponse.getMessage().stream()
             .forEach(Writer::printLine);
 
         Writer.printLine(BENEFIT_AMOUNT_HEADER);
         Writer.printLine(String.format(DISCOUNT_AMOUNT_MESSAGE, benefitAmount));
+    }
+
+    public static void alertTotalPayment(int payment) {
+        Writer.printLine(TOTAL_PAYMENT_HEADER);
+        Writer.printLine(String.format(AMOUNT_MESSAGE, payment));
+    }
+
+    public static void alertBadge(String badge) {
+        Writer.printLine(BADGE_HEADER);
+        Writer.printLine(badge);
     }
 }
