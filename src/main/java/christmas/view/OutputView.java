@@ -14,11 +14,11 @@ public class OutputView {
     private static final String TOTAL_PAYMENT_HEADER = "<할인 후 예상 결제 금액>";
     private static final String BADGE_HEADER = "<12월 이벤트 배지>";
 
-    public static void alertPreview(String visitDate) {
+    public void alertPreview(String visitDate) {
         Writer.printLine(String.format(BENEFIT_MESSAGE, visitDate));
     }
 
-    public static void alertOrder(ItemResponse orderResponse, int orderAmount) {
+    public void alertOrder(ItemResponse orderResponse, int orderAmount) {
         Writer.printLine(ORDER_MENU_HEADER);
         orderResponse.getMessage().stream()
             .forEach(Writer::printLine);
@@ -27,13 +27,13 @@ public class OutputView {
         Writer.printLine(String.format(AMOUNT_MESSAGE, orderAmount));
     }
 
-    public static void alertGift(ItemResponse giftResponse) {
+    public void alertGift(ItemResponse giftResponse) {
         Writer.printLine(GIFT_MENU_HEADER);
         giftResponse.getMessage().stream()
             .forEach(Writer::printLine);
     }
 
-    public static void alertBenefit(BenefitResponse benefitResponse, int benefitAmount) {
+    public void alertBenefit(BenefitResponse benefitResponse, int benefitAmount) {
         Writer.printLine(BENEFIT_HEADER);
         benefitResponse.getMessage().stream()
             .forEach(Writer::printLine);
@@ -42,17 +42,17 @@ public class OutputView {
         Writer.printLine(String.format(DISCOUNT_AMOUNT_MESSAGE, benefitAmount));
     }
 
-    public static void alertTotalPayment(int payment) {
+    public void alertTotalPayment(int payment) {
         Writer.printLine(TOTAL_PAYMENT_HEADER);
         Writer.printLine(String.format(AMOUNT_MESSAGE, payment));
     }
 
-    public static void alertBadge(String badge) {
+    public void alertBadge(String badge) {
         Writer.printLine(BADGE_HEADER);
         Writer.printLine(badge);
     }
 
-    public static void alertError(String errorMessage) {
+    public void alertError(String errorMessage) {
         Writer.printLine(errorMessage);
     }
 }
