@@ -24,4 +24,16 @@ public class OutputView {
         Writer.printLine(ORDER_AMOUNT_HEADER);
         Writer.printLine(orderAmount);
     }
+
+    public static void alertGift(ItemResponse giftResponse) {
+        Writer.printLine(GIFT_MENU_HEADER);
+        giftResponse.getMessage().stream()
+            .forEach(Writer::printLine);
+    }
+
+    public static void alertBenefit(BenefitResponse benefitResponse) {
+        Writer.printLine(BENEFIT_HEADER);
+        benefitResponse.getMessage().stream()
+            .forEach(Writer::printLine);
+    }
 }
