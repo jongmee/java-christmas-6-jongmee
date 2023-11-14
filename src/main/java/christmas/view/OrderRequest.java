@@ -2,6 +2,7 @@ package christmas.view;
 
 import static christmas.constants.ErrorMessage.INVALID_ORDER;
 
+import christmas.domain.Order;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
@@ -79,5 +80,9 @@ public class OrderRequest {
         } catch (NumberFormatException e) {
             throw new IllegalArgumentException(INVALID_ORDER);
         }
+    }
+
+    public Order convertToValidOrder() {
+        return new Order(orders);
     }
 }
