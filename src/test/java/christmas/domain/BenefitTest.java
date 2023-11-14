@@ -1,7 +1,10 @@
 package christmas.domain;
 
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+import christmas.view.BenefitResponse;
+import java.util.List;
 import java.util.Map;
 import java.util.stream.Stream;
 import org.junit.jupiter.api.DisplayName;
@@ -13,8 +16,8 @@ import org.junit.jupiter.params.provider.MethodSource;
 class BenefitTest {
     @DisplayName("할인 금액을 올바르게 계산한다.")
     @ParameterizedTest
-    @MethodSource("할인종목과_방문날짜_설정하기")
-    void 할인_금액을_올바르게_계산한다(Discount 할인종목, VisitDate 방문날짜, Integer 할인금액) {
+    @MethodSource("방문날짜와_할인결과_설정하기")
+    void 할인_금액을_올바르게_계산한다(VisitDate 방문날짜, String 할인결과) {
         // given
         Order 주문 = 주문_생성하기();
 
@@ -22,16 +25,16 @@ class BenefitTest {
         Benefit 할인혜택 = new Benefit(방문날짜, 주문);
 
         // then
-        assertEquals(할인금액, 할인혜택.getDiscounts().get(할인종목));
+        List<String> 응답 = 할인혜택.convertToResponse().getMessage();
+        assertThat(응답).contains(할인결과);
     }
 
-    static Stream<Arguments> 할인종목과_방문날짜_설정하기() {
+    static Stream<Arguments> 방문날짜와_할인결과_설정하기() {
         return Stream.of(
-            Arguments.arguments(Discount.WEEKEND, new VisitDate(16), 6_069),
-            Arguments.arguments(Discount.WEEKDAY, new VisitDate(26), 4_046),
-            Arguments.arguments(Discount.CHRISTMAS, new VisitDate(24), 3_300),
-            Arguments.arguments(Discount.CHRISTMAS, new VisitDate(28), null),
-            Arguments.arguments(Discount.SPECIAL, new VisitDate(17), 1_000)
+            Arguments.arguments(new VisitDate(16), "주말 할인: -6,069원"),
+            Arguments.arguments(new VisitDate(26), "평일 할인: -4,046원"),
+            Arguments.arguments(new VisitDate(24), "크리스마스 디데이 할인: -3,300원"),
+            Arguments.arguments(new VisitDate(17), "특별 할인: -1,000원")
         );
     }
 

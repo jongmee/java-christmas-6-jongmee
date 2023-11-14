@@ -22,7 +22,7 @@ class BadgeTest {
 
     static Stream<Arguments> 혜택금액과_이벤트배지_설정하기() {
         return Stream.of(
-            Arguments.arguments(4_046, null),
+            Arguments.arguments(4_046, Badge.NONE),
             Arguments.arguments(5_600, Badge.STAR),
             Arguments.arguments(16_000, Badge.TREE),
             Arguments.arguments(50_000, Badge.SANTA)
