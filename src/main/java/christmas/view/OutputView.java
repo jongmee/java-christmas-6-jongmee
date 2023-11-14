@@ -14,7 +14,7 @@ public class OutputView {
     private static final String TOTAL_PAYMENT_HEADER = "<할인 후 예상 결제 금액>";
     private static final String BADGE_HEADER = "<12월 이벤트 배지>";
 
-    public static void alertBenefit(String visitDate) {
+    public static void alertPreview(String visitDate) {
         Writer.printLine(String.format(BENEFIT_MESSAGE, visitDate));
     }
 
@@ -50,5 +50,9 @@ public class OutputView {
     public static void alertBadge(String badge) {
         Writer.printLine(BADGE_HEADER);
         Writer.printLine(badge);
+    }
+
+    public static void alertError(String errorMessage) {
+        Writer.printLine(errorMessage);
     }
 }
