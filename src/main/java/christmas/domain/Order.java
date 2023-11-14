@@ -58,6 +58,10 @@ public class Order {
         return sum;
     }
 
+    public int calculateTotalPayment(int discountAmount) {
+        return calculateTotalPrice() - discountAmount;
+    }
+
     public int countByMenuType(MenuType type) {
         int count = 0;
         for(Map.Entry<Menu, Integer> entry : orders.entrySet()) {
