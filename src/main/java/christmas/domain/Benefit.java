@@ -17,7 +17,7 @@ public class Benefit {
         this.giftCounts = determineGifts(order);
     }
 
-    private boolean checkOrderAmount(final Order order) {
+    private boolean validateOrderAmount(final Order order) {
         if(order.calculateTotalPrice() >= MINIMUM_ORDER_AMOUNT) {
             return true;
         }
@@ -26,7 +26,7 @@ public class Benefit {
 
     private Map<Discount, Integer> determineDiscounts(final VisitDate date, final Order order) {
         Map<Discount, Integer> result = new HashMap<>();
-        if(checkOrderAmount(order)) {
+        if(validateOrderAmount(order)) {
             result.putAll(determineWeekDiscount(date, order));
             result.putAll(determineSpecialDiscount(date));
             result.putAll(determineChristmasDiscount(date));
@@ -56,7 +56,7 @@ public class Benefit {
     }
 
     private Map<Menu, Integer> determineGifts(final Order order) {
-        if(checkOrderAmount(order) && order.calculateTotalPrice() > GIFT_CRITERIA) {
+        if(validateOrderAmount(order) && order.calculateTotalPrice() > GIFT_CRITERIA) {
             return Map.of(Menu.CHAMPAGNE, 1);
         }
         return Map.of();
