@@ -19,7 +19,7 @@ public class OutputView {
         Writer.printLine(String.format(BENEFIT_MESSAGE, visitDate));
     }
 
-    public void alertOrder(ItemResponse orderResponse, int orderAmount) {
+    public void alertOrder(final ItemResponse orderResponse, final int orderAmount) {
         Writer.printLine(ORDER_MENU_HEADER);
         orderResponse.getMessage().stream()
             .forEach(Writer::printLine);
@@ -28,13 +28,13 @@ public class OutputView {
         Writer.printLine(String.format(AMOUNT_MESSAGE, orderAmount));
     }
 
-    public void alertGift(ItemResponse giftResponse) {
+    public void alertGift(final ItemResponse giftResponse) {
         Writer.printLine(GIFT_MENU_HEADER);
         giftResponse.getMessage().stream()
             .forEach(Writer::printLine);
     }
 
-    public void alertBenefit(BenefitResponse benefitResponse, int benefitAmount) {
+    public void alertBenefit(final BenefitResponse benefitResponse, final int benefitAmount) {
         Writer.printLine(BENEFIT_HEADER);
         benefitResponse.getMessage().stream()
             .forEach(Writer::printLine);
@@ -43,17 +43,17 @@ public class OutputView {
         Writer.printLine(String.format(AMOUNT_MESSAGE, -1 * benefitAmount));
     }
 
-    public void alertTotalPayment(int payment) {
+    public void alertTotalPayment(final int payment) {
         Writer.printLine(TOTAL_PAYMENT_HEADER);
         Writer.printLine(String.format(AMOUNT_MESSAGE, payment));
     }
 
-    public void alertBadge(String badge) {
+    public void alertBadge(final String badge) {
         Writer.printLine(BADGE_HEADER);
         Writer.printLine(badge);
     }
 
-    public void alertError(String errorMessage) {
+    public void alertError(final String errorMessage) {
         Writer.printLine(errorMessage);
     }
 }

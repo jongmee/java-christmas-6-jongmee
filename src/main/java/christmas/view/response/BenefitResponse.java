@@ -12,12 +12,12 @@ public class BenefitResponse {
 
     private final List<String> message;
 
-    public BenefitResponse(Map<Discount, Integer> discountAmounts, int giftAmounts) {
+    public BenefitResponse(final Map<Discount, Integer> discountAmounts, final int giftAmounts) {
         this.message = convertToMessage(discountAmounts, giftAmounts);
     }
 
     private List<String> convertToMessage(
-        Map<Discount, Integer> discountAmounts, int giftAmounts) {
+        final Map<Discount, Integer> discountAmounts, final int giftAmounts) {
         List<String> message = new ArrayList<>();
 
         for(Map.Entry<Discount, Integer> discount : discountAmounts.entrySet()) {
@@ -33,7 +33,7 @@ public class BenefitResponse {
         return checkEmptyList(message);
     }
 
-    private List<String> checkEmptyList(List<String> message) {
+    private List<String> checkEmptyList(final List<String> message) {
         if(message.size() == 0) {
             message.add(NONE);
         }

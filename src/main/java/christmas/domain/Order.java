@@ -13,7 +13,7 @@ public class Order {
 
     private final Map<Menu, Integer> orders;
 
-    public Order(Map<String, Integer> orders) {
+    public Order(final Map<String, Integer> orders) {
         this.orders = validateMenu(orders);
         validateTotalCount();
         validateBeverage();

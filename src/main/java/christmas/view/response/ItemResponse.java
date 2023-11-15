@@ -11,11 +11,11 @@ public class ItemResponse {
 
     private final List<String> message;
 
-    public ItemResponse(Map<Menu, Integer> items) {
+    public ItemResponse(final Map<Menu, Integer> items) {
         this.message = convertToMessage(items);
     }
 
-    private List<String> convertToMessage(Map<Menu, Integer> items) {
+    private List<String> convertToMessage(final Map<Menu, Integer> items) {
         List<String> message = new ArrayList<>();
         for(Map.Entry<Menu, Integer> entry : items.entrySet()) {
             Menu menu = entry.getKey();
@@ -26,7 +26,7 @@ public class ItemResponse {
         return checkEmptyList(message);
     }
 
-    private List<String> checkEmptyList(List<String> message) {
+    private List<String> checkEmptyList(final List<String> message) {
         if(message.size() == 0) {
             message.add(NONE);
         }

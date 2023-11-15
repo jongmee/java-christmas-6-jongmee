@@ -12,7 +12,7 @@ public enum Badge {
     private String name;
     private int criterionAmount;
 
-    Badge(String name, int criterionAmount) {
+    Badge(final String name, final int criterionAmount) {
         this.name = name;
         this.criterionAmount = criterionAmount;
     }
