@@ -1,4 +1,4 @@
-package christmas.view;
+package christmas.view.request;
 
 import static christmas.constants.ErrorMessage.INVALID_ORDER;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThatThrownBy;
