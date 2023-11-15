@@ -21,7 +21,7 @@ public enum Badge {
         return Arrays.stream(Badge.values())
             .filter(badge -> badge.criterionAmount <= totalAmount)
             .max(Comparator.comparingInt(badge -> badge.criterionAmount))
-            .orElse(null);
+            .get();
     }
 
     @Override
