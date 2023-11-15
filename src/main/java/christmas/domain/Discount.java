@@ -26,20 +26,20 @@ public enum Discount {
         validate(WEEKDAY, WEEKEND);
         int count = order.countByMenuType(target);
         if(count != 0) {
-            return new HashMap<>(Map.of(this, count * amount));
+            return Map.of(this, count * amount);
         }
-        return new HashMap<>();
+        return Map.of();
     }
 
     public Map<Discount, Integer> calculateSpecialDiscount() {
         validate(SPECIAL);
-        return new HashMap<>(Map.of(this, amount));
+        return Map.of(this, amount);
     }
 
     public Map<Discount, Integer> calculateChristmasDiscount(final VisitDate date) {
         validate(CHRISTMAS);
         int offset = 1_000;
-        return new HashMap<>(Map.of(this, date.getChristmasDiscountWeight() * amount + offset));
+        return Map.of(this, date.getChristmasDiscountWeight() * amount + offset);
     }
 
     private void validate(Discount...discounts) {

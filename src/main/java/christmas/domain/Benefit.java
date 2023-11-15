@@ -45,21 +45,21 @@ public class Benefit {
         if(date.isChristmas() || date.calculateDay().equals(Day.SUNDAY)) {
             return Discount.SPECIAL.calculateSpecialDiscount();
         }
-        return new HashMap<>();
+        return Map.of();
     }
 
     private Map<Discount, Integer> determineChristmasDiscount(final VisitDate date) {
         if(date.isChristmas() || date.isBeforeChristmas()) {
             return Discount.CHRISTMAS.calculateChristmasDiscount(date);
         }
-        return new HashMap<>();
+        return Map.of();
     }
 
     private Map<Menu, Integer> determineGifts(final Order order) {
         if(checkOrderAmount(order) && order.calculateTotalPrice() > GIFT_CRITERIA) {
-            return new HashMap<>(Map.of(Menu.CHAMPAGNE, 1));
+            return Map.of(Menu.CHAMPAGNE, 1);
         }
-        return new HashMap<>();
+        return Map.of();
     }
 
     public int calculateGiftAmount() {
