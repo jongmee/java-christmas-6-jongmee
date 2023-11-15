@@ -20,8 +20,7 @@ public class VisitDate {
     }
 
     public Day calculateDay() {
-        final int offset = date % 7;
-        return Day.findByOffset(offset);
+        return Day.findByDate(date);
     }
 
     public boolean isBeforeChristmas() {

@@ -17,7 +17,8 @@ public enum Day {
         this.offset = offset;
     }
 
-    public static Day findByOffset(final int offset) {
+    public static Day findByDate(final int date) {
+        final int offset = date % 7;
         return Arrays.stream(Day.values())
             .filter(day -> day.offset == offset)
             .findAny().get();
